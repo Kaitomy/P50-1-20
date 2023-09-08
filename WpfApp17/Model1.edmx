@@ -1,0 +1,2260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Kitchen_ShopModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Users_Admin_ID" />
+          </Key>
+          <Property Name="Klient_Nickname" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Users_Admin_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Backup_All">
+          <Key>
+            <PropertyRef Name="ID_Buckup" />
+          </Key>
+          <Property Name="ID_Buckup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Backup_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Buy">
+          <Key>
+            <PropertyRef Name="ID_Buy" />
+          </Key>
+          <Property Name="ID_Buy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Buy_Date" Type="datetime" Nullable="false" />
+          <Property Name="Buy_Plus" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Buy_Money" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Users_Buy_ID" Type="int" Nullable="false" />
+          <Property Name="Contractor_ID" Type="int" Nullable="false" />
+          <Property Name="Request_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Buy_History">
+          <Key>
+            <PropertyRef Name="ID_Buy_History" />
+          </Key>
+          <Property Name="ID_Buy_History" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Buy_Date_History" Type="datetime" Nullable="false" />
+          <Property Name="Buy_Plus_History" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Buy_Money_History" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Users_Buy_ID_History" Type="int" Nullable="false" />
+          <Property Name="Contractor_ID_History" Type="int" Nullable="false" />
+          <Property Name="Request_ID_History" Type="int" Nullable="false" />
+          <Property Name="Date_Create" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contractor">
+          <Key>
+            <PropertyRef Name="ID_Contractor" />
+          </Key>
+          <Property Name="ID_Contractor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Contractor_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Contractor_Date" Type="date" Nullable="false" />
+          <Property Name="Contractor_Status" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Contractor_Desc" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Special_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Klient">
+          <Key>
+            <PropertyRef Name="Users_Klient_ID" />
+          </Key>
+          <Property Name="Klient_Last_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Klient_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Klient_Address" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Klient_Date" Type="datetime" Nullable="false" />
+          <Property Name="Klient_Middle_Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="Users_Klient_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mark">
+          <Key>
+            <PropertyRef Name="ID_Mark" />
+          </Key>
+          <Property Name="ID_Mark" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mark_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="ID_Model" />
+          </Key>
+          <Property Name="ID_Model" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Model_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Mark_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID_Order" />
+          </Key>
+          <Property Name="ID_Order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Order_Date" Type="datetime" Nullable="false" />
+          <Property Name="Order_Amount" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="Order_Number" Type="int" Nullable="false" />
+          <Property Name="Order_Status" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Service_Delivery_Assembly_ID" Type="int" Nullable="false" />
+          <Property Name="Tovar_ID" Type="int" Nullable="false" />
+          <Property Name="Users_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pay">
+          <Key>
+            <PropertyRef Name="ID_Pay" />
+          </Key>
+          <Property Name="ID_Pay" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pay_Date" Type="datetime" Nullable="false" />
+          <Property Name="Pay_Money" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Users_Pay_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="ID_Request" />
+          </Key>
+          <Property Name="ID_Request" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Request_Desc" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Request_Date_Start" Type="datetime" Nullable="false" />
+          <Property Name="Request_Date_End" Type="datetime" />
+          <Property Name="Request_Status" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Users_Request_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Request_History">
+          <Key>
+            <PropertyRef Name="ID_Request_History" />
+          </Key>
+          <Property Name="ID_Request_History" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Request_Desc_History" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Request_Date_Start_History" Type="datetime" Nullable="false" />
+          <Property Name="Request_Date_End_History" Type="datetime" />
+          <Property Name="Request_Status_History" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Users_Request_ID_History" Type="int" Nullable="false" />
+          <Property Name="Date_Create" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="ID_Roles" />
+          </Key>
+          <Property Name="ID_Roles" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Roles_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Service_Delivery_Assembly">
+          <Key>
+            <PropertyRef Name="ID_Service_Delivery_Assembly" />
+          </Key>
+          <Property Name="ID_Service_Delivery_Assembly" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Service_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Service_Country" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Service_Price" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Service_Period" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sklad">
+          <Key>
+            <PropertyRef Name="ID_Sklad" />
+          </Key>
+          <Property Name="ID_Sklad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sklad_Address" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Sklad_Sity" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sklad_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sklad_History">
+          <Key>
+            <PropertyRef Name="ID_Sklad_History" />
+          </Key>
+          <Property Name="ID_Sklad_History" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sklad_Address_History" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Sklad_Sity_History" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sklad_Name_History" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Date_Create" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sklad_Worker">
+          <Key>
+            <PropertyRef Name="Users_Sklad_ID" />
+          </Key>
+          <Property Name="Users_Sklad_ID" Type="int" Nullable="false" />
+          <Property Name="Sklad_Worker_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sort">
+          <Key>
+            <PropertyRef Name="ID_Sort" />
+          </Key>
+          <Property Name="ID_Sort" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sort_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sotrudniki">
+          <Key>
+            <PropertyRef Name="Users_Sotrudniki_ID" />
+          </Key>
+          <Property Name="Sotrudniki_Last_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sotrudniki_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sotrudniki_Education" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sotrudniki_Experience" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sotrudniki_Age" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="Sotrudniki_Language" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sotrudniki_Middle_Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="Sotrudniki_Money" Type="nvarchar" MaxLength="10" />
+          <Property Name="Users_Sotrudniki_ID" Type="int" Nullable="false" />
+          <Property Name="Roles_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Special">
+          <Key>
+            <PropertyRef Name="ID_Special" />
+          </Key>
+          <Property Name="ID_Special" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Special_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tovar">
+          <Key>
+            <PropertyRef Name="ID_Tovar" />
+          </Key>
+          <Property Name="ID_Tovar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tovar_Image" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Tovar_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Tovar_Colour" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Tovar_Size" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Tovar_Desc" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Tovar_Country" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sklad_ID" Type="int" Nullable="false" />
+          <Property Name="Model_ID" Type="int" Nullable="false" />
+          <Property Name="Sort_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID_Users" />
+          </Key>
+          <Property Name="ID_Users" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Users_Login" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Users_Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Users_Email" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Users_Status" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Kitchen_Shop.dbo.View_1" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="View_1">
+          <Key>
+            <PropertyRef Name="ID_Model" />
+            <PropertyRef Name="Model_Name" />
+            <PropertyRef Name="Mark_ID" />
+            <PropertyRef Name="Mark_Name" />
+          </Key>
+          <Property Name="ID_Model" Type="int" Nullable="false" />
+          <Property Name="Model_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Mark_ID" Type="int" Nullable="false" />
+          <Property Name="Mark_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="Contractor_ID">
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Buy" Type="Self.Buy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contractor">
+              <PropertyRef Name="ID_Contractor" />
+            </Principal>
+            <Dependent Role="Buy">
+              <PropertyRef Name="Contractor_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Contractor_ID_History">
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Buy_History" Type="Self.Buy_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contractor">
+              <PropertyRef Name="ID_Contractor" />
+            </Principal>
+            <Dependent Role="Buy_History">
+              <PropertyRef Name="Contractor_ID_History" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Admin_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="Users_Admin_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Klient_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Klient" Type="Self.Klient" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Klient">
+              <PropertyRef Name="Users_Klient_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sklad_Worker_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Sklad_Worker" Type="Self.Sklad_Worker" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Sklad_Worker">
+              <PropertyRef Name="Users_Sklad_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudniki_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Sotrudniki">
+              <PropertyRef Name="Users_Sotrudniki_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Mark_ID">
+          <End Role="Mark" Type="Self.Mark" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Model" Type="Self.Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mark">
+              <PropertyRef Name="ID_Mark" />
+            </Principal>
+            <Dependent Role="Model">
+              <PropertyRef Name="Mark_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Model_ID">
+          <End Role="Model" Type="Self.Model" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="ID_Model" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="Model_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Request_ID">
+          <End Role="Request" Type="Self.Request" Multiplicity="1" />
+          <End Role="Buy" Type="Self.Buy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request">
+              <PropertyRef Name="ID_Request" />
+            </Principal>
+            <Dependent Role="Buy">
+              <PropertyRef Name="Request_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Request_ID_History">
+          <End Role="Request" Type="Self.Request" Multiplicity="1" />
+          <End Role="Buy_History" Type="Self.Buy_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request">
+              <PropertyRef Name="ID_Request" />
+            </Principal>
+            <Dependent Role="Buy_History">
+              <PropertyRef Name="Request_ID_History" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Roles_ID">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID_Roles" />
+            </Principal>
+            <Dependent Role="Sotrudniki">
+              <PropertyRef Name="Roles_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Service_Delivery_Assembly_ID">
+          <End Role="Service_Delivery_Assembly" Type="Self.Service_Delivery_Assembly" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service_Delivery_Assembly">
+              <PropertyRef Name="ID_Service_Delivery_Assembly" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Service_Delivery_Assembly_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Sklad_ID">
+          <End Role="Sklad" Type="Self.Sklad" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sklad">
+              <PropertyRef Name="ID_Sklad" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="Sklad_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Sklad_Worker_ID">
+          <End Role="Sklad" Type="Self.Sklad" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sklad_Worker" Type="Self.Sklad_Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sklad">
+              <PropertyRef Name="ID_Sklad" />
+            </Principal>
+            <Dependent Role="Sklad_Worker">
+              <PropertyRef Name="Sklad_Worker_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Sort_ID">
+          <End Role="Sort" Type="Self.Sort" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sort">
+              <PropertyRef Name="ID_Sort" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="Sort_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Special_ID">
+          <End Role="Special" Type="Self.Special" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Special">
+              <PropertyRef Name="ID_Special" />
+            </Principal>
+            <Dependent Role="Contractor">
+              <PropertyRef Name="Special_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Tovar_ID">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID_Tovar" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Tovar_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Users_Buy_ID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Buy" Type="Self.Buy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Buy">
+              <PropertyRef Name="Users_Buy_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Users_Buy_ID_History">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Buy_History" Type="Self.Buy_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Buy_History">
+              <PropertyRef Name="Users_Buy_ID_History" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Users_ID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Users_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Users_Pay_ID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Pay" Type="Self.Pay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Pay">
+              <PropertyRef Name="Users_Pay_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Users_Request_ID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="Users_Request_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Users_Request_ID_History">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Request_History" Type="Self.Request_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Request_History">
+              <PropertyRef Name="Users_Request_ID_History" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="backup_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Backup_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Buy_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Buy_Plus" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Buy_Date" Type="datetime" Mode="In" />
+          <Parameter Name="Buy_Money" Type="nvarchar" Mode="In" />
+          <Parameter Name="Users" Type="int" Mode="In" />
+          <Parameter Name="Contractor" Type="int" Mode="In" />
+          <Parameter Name="Request" Type="int" Mode="In" />
+        </Function>
+        <Function Name="contractor_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Contractor" Type="int" Mode="In" />
+        </Function>
+        <Function Name="contractor_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Special_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Contractor_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Contractor_Date" Type="date" Mode="In" />
+          <Parameter Name="Contractor_Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="Contractor_Desc" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Special" Type="int" Mode="In" />
+        </Function>
+        <Function Name="contractor_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Contractor_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Contractor_Date" Type="date" Mode="In" />
+          <Parameter Name="Contractor_Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="Contractor_Desc" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ID_Contractor" Type="int" Mode="In" />
+          <Parameter Name="Special" Type="int" Mode="In" />
+        </Function>
+        <Function Name="contractor_update_end" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Contractor" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="klient_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Klient" Type="int" Mode="In" />
+        </Function>
+        <Function Name="klient_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Users_Login" Type="nvarchar" Mode="In" />
+          <Parameter Name="Klient_Last_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Klient_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Klient_Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Klient_Date" Type="datetime" Mode="In" />
+          <Parameter Name="Klient_Middle_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Users_Klient_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="klient_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Users" Type="int" Mode="In" />
+          <Parameter Name="Klient_Last_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Klient_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Klient_Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Klient_Date" Type="datetime" Mode="In" />
+          <Parameter Name="Klient_Middle_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="mark_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Mark_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="mark_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Mark_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="mark_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Mark" Type="int" Mode="In" />
+          <Parameter Name="Mark_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="model_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Model" Type="int" Mode="In" />
+        </Function>
+        <Function Name="model_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Model_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mark_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="model_insert_mark" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name_Mark" Type="nvarchar" Mode="In" />
+          <Parameter Name="Model_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mark" Type="int" Mode="In" />
+        </Function>
+        <Function Name="model_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Model" Type="int" Mode="In" />
+          <Parameter Name="Model_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mark_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="model_update_s" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Model" Type="int" Mode="In" />
+          <Parameter Name="Model_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="order_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Order_Date" Type="datetime" Mode="In" />
+          <Parameter Name="Order_Amount" Type="nvarchar" Mode="In" />
+          <Parameter Name="Order_Number" Type="int" Mode="In" />
+          <Parameter Name="Order_Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="Service" Type="int" Mode="In" />
+          <Parameter Name="Tovar" Type="int" Mode="In" />
+          <Parameter Name="Users" Type="int" Mode="In" />
+        </Function>
+        <Function Name="order_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Order" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pay_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Pay_Date" Type="datetime" Mode="In" />
+          <Parameter Name="Pay_Money" Type="nvarchar" Mode="In" />
+          <Parameter Name="Users" Type="int" Mode="In" />
+        </Function>
+        <Function Name="request_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Request_Desc" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Request_Date_Start" Type="datetime" Mode="In" />
+          <Parameter Name="Request_Date_End" Type="datetime" Mode="In" />
+          <Parameter Name="Request_Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="Users_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="request_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Request" Type="int" Mode="In" />
+          <Parameter Name="Date_End" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="roles_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Roles_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="roles_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Roles_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="roles_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Roles" Type="int" Mode="In" />
+          <Parameter Name="Roles_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="service_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Service" Type="int" Mode="In" />
+        </Function>
+        <Function Name="service_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Service_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Service_Country" Type="nvarchar" Mode="In" />
+          <Parameter Name="Service_Price" Type="nvarchar" Mode="In" />
+          <Parameter Name="Service_Period" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="service_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Service" Type="int" Mode="In" />
+          <Parameter Name="Service_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Service_Country" Type="nvarchar" Mode="In" />
+          <Parameter Name="Service_Price" Type="nvarchar" Mode="In" />
+          <Parameter Name="Service_Period" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sklad_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Sklad" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sklad_insert_new" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Sklad_Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sklad_Sity" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sklad_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sklad_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Sklad" Type="int" Mode="In" />
+          <Parameter Name="Sklad_Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sklad_Sity" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sklad_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sort_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Sort_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sort_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Sort_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sort_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Sort" Type="int" Mode="In" />
+          <Parameter Name="Sort_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sotrudniki_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Sotrudniki" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sotrudniki_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Users_Login" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sotrudniki_Last_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sotrudniki_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sotrudniki_Education" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sotrudniki_Experience" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sotrudniki_Age" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sotrudniki_Language" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sotrudniki_Middle_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sotrudniki_Money" Type="nvarchar" Mode="In" />
+          <Parameter Name="Users_Sotrudniki_ID" Type="int" Mode="In" />
+          <Parameter Name="Roles_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sotrudniki_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Sotrudniki" Type="int" Mode="In" />
+          <Parameter Name="Sotrudniki_Last_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sotrudniki_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sotrudniki_Education" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sotrudniki_Experience" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sotrudniki_Age" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sotrudniki_Language" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sotrudniki_Middle_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="special_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Special_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="special_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Special_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="special_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Special" Type="int" Mode="In" />
+          <Parameter Name="Special_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="tovar_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Tovar" Type="int" Mode="In" />
+        </Function>
+        <Function Name="tovar_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Tovar_Image" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Tovar_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Tovar_Colour" Type="nvarchar" Mode="In" />
+          <Parameter Name="Tovar_Size" Type="nvarchar" Mode="In" />
+          <Parameter Name="Tovar_Desc" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Tovar_Country" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sklad_ID" Type="int" Mode="In" />
+          <Parameter Name="Model_ID" Type="int" Mode="In" />
+          <Parameter Name="Sort_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Users_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Users" Type="int" Mode="In" />
+        </Function>
+        <Function Name="users_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Users_Login" Type="nvarchar" Mode="In" />
+          <Parameter Name="Users_Password" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Users_Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Users_Status" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="users_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Users" Type="int" Mode="In" />
+          <Parameter Name="Users_Login" Type="nvarchar" Mode="In" />
+          <Parameter Name="Users_Password" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Users_Email" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="users_update_block" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Users" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="Хранилище Kitchen_ShopModelContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Backup_All" EntityType="Self.Backup_All" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Buy" EntityType="Self.Buy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Buy_History" EntityType="Self.Buy_History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contractor" EntityType="Self.Contractor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Klient" EntityType="Self.Klient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mark" EntityType="Self.Mark" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Model" EntityType="Self.Model" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pay" EntityType="Self.Pay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Request_History" EntityType="Self.Request_History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service_Delivery_Assembly" EntityType="Self.Service_Delivery_Assembly" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sklad" EntityType="Self.Sklad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sklad_History" EntityType="Self.Sklad_History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sklad_Worker" EntityType="Self.Sklad_Worker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sort" EntityType="Self.Sort" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sotrudniki" EntityType="Self.Sotrudniki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Special" EntityType="Self.Special" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tovar" EntityType="Self.Tovar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_1" EntityType="Self.View_1" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_1].[ID_Model] AS [ID_Model], 
+    [View_1].[Model_Name] AS [Model_Name], 
+    [View_1].[Mark_ID] AS [Mark_ID], 
+    [View_1].[Mark_Name] AS [Mark_Name]
+    FROM [dbo].[View_1] AS [View_1]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="Contractor_ID" Association="Self.Contractor_ID">
+            <End Role="Contractor" EntitySet="Contractor" />
+            <End Role="Buy" EntitySet="Buy" />
+          </AssociationSet>
+          <AssociationSet Name="Contractor_ID_History" Association="Self.Contractor_ID_History">
+            <End Role="Contractor" EntitySet="Contractor" />
+            <End Role="Buy_History" EntitySet="Buy_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Admin_Users" Association="Self.FK_Admin_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Klient_Users" Association="Self.FK_Klient_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Klient" EntitySet="Klient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sklad_Worker_Users" Association="Self.FK_Sklad_Worker_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Sklad_Worker" EntitySet="Sklad_Worker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudniki_Users" Association="Self.FK_Sotrudniki_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+          </AssociationSet>
+          <AssociationSet Name="Mark_ID" Association="Self.Mark_ID">
+            <End Role="Mark" EntitySet="Mark" />
+            <End Role="Model" EntitySet="Model" />
+          </AssociationSet>
+          <AssociationSet Name="Model_ID" Association="Self.Model_ID">
+            <End Role="Model" EntitySet="Model" />
+            <End Role="Tovar" EntitySet="Tovar" />
+          </AssociationSet>
+          <AssociationSet Name="Request_ID" Association="Self.Request_ID">
+            <End Role="Request" EntitySet="Request" />
+            <End Role="Buy" EntitySet="Buy" />
+          </AssociationSet>
+          <AssociationSet Name="Request_ID_History" Association="Self.Request_ID_History">
+            <End Role="Request" EntitySet="Request" />
+            <End Role="Buy_History" EntitySet="Buy_History" />
+          </AssociationSet>
+          <AssociationSet Name="Roles_ID" Association="Self.Roles_ID">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+          </AssociationSet>
+          <AssociationSet Name="Service_Delivery_Assembly_ID" Association="Self.Service_Delivery_Assembly_ID">
+            <End Role="Service_Delivery_Assembly" EntitySet="Service_Delivery_Assembly" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="Sklad_ID" Association="Self.Sklad_ID">
+            <End Role="Sklad" EntitySet="Sklad" />
+            <End Role="Tovar" EntitySet="Tovar" />
+          </AssociationSet>
+          <AssociationSet Name="Sklad_Worker_ID" Association="Self.Sklad_Worker_ID">
+            <End Role="Sklad" EntitySet="Sklad" />
+            <End Role="Sklad_Worker" EntitySet="Sklad_Worker" />
+          </AssociationSet>
+          <AssociationSet Name="Sort_ID" Association="Self.Sort_ID">
+            <End Role="Sort" EntitySet="Sort" />
+            <End Role="Tovar" EntitySet="Tovar" />
+          </AssociationSet>
+          <AssociationSet Name="Special_ID" Association="Self.Special_ID">
+            <End Role="Special" EntitySet="Special" />
+            <End Role="Contractor" EntitySet="Contractor" />
+          </AssociationSet>
+          <AssociationSet Name="Tovar_ID" Association="Self.Tovar_ID">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="Users_Buy_ID" Association="Self.Users_Buy_ID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Buy" EntitySet="Buy" />
+          </AssociationSet>
+          <AssociationSet Name="Users_Buy_ID_History" Association="Self.Users_Buy_ID_History">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Buy_History" EntitySet="Buy_History" />
+          </AssociationSet>
+          <AssociationSet Name="Users_ID" Association="Self.Users_ID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="Users_Pay_ID" Association="Self.Users_Pay_ID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Pay" EntitySet="Pay" />
+          </AssociationSet>
+          <AssociationSet Name="Users_Request_ID" Association="Self.Users_Request_ID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="Users_Request_ID_History" Association="Self.Users_Request_ID_History">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Request_History" EntitySet="Request_History" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Kitchen_ShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Users_Admin_ID" />
+          </Key>
+          <Property Name="Klient_Nickname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Users_Admin_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Admin_Users" FromRole="Admin" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Backup_All">
+          <Key>
+            <PropertyRef Name="ID_Buckup" />
+          </Key>
+          <Property Name="ID_Buckup" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Backup_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Buy">
+          <Key>
+            <PropertyRef Name="ID_Buy" />
+          </Key>
+          <Property Name="ID_Buy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Buy_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Buy_Plus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Buy_Money" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Users_Buy_ID" Type="Int32" Nullable="false" />
+          <Property Name="Contractor_ID" Type="Int32" Nullable="false" />
+          <Property Name="Request_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Contractor" Relationship="Self.Contractor_ID" FromRole="Buy" ToRole="Contractor" />
+          <NavigationProperty Name="Request" Relationship="Self.Request_ID" FromRole="Buy" ToRole="Request" />
+          <NavigationProperty Name="Users" Relationship="Self.Users_Buy_ID" FromRole="Buy" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Buy_History">
+          <Key>
+            <PropertyRef Name="ID_Buy_History" />
+          </Key>
+          <Property Name="ID_Buy_History" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Buy_Date_History" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Buy_Plus_History" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Buy_Money_History" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Users_Buy_ID_History" Type="Int32" Nullable="false" />
+          <Property Name="Contractor_ID_History" Type="Int32" Nullable="false" />
+          <Property Name="Request_ID_History" Type="Int32" Nullable="false" />
+          <Property Name="Date_Create" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Contractor" Relationship="Self.Contractor_ID_History" FromRole="Buy_History" ToRole="Contractor" />
+          <NavigationProperty Name="Request" Relationship="Self.Request_ID_History" FromRole="Buy_History" ToRole="Request" />
+          <NavigationProperty Name="Users" Relationship="Self.Users_Buy_ID_History" FromRole="Buy_History" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Contractor">
+          <Key>
+            <PropertyRef Name="ID_Contractor" />
+          </Key>
+          <Property Name="ID_Contractor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Contractor_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contractor_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Contractor_Status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contractor_Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Special_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Buy" Relationship="Self.Contractor_ID" FromRole="Contractor" ToRole="Buy" />
+          <NavigationProperty Name="Buy_History" Relationship="Self.Contractor_ID_History" FromRole="Contractor" ToRole="Buy_History" />
+          <NavigationProperty Name="Special" Relationship="Self.Special_ID" FromRole="Contractor" ToRole="Special" />
+        </EntityType>
+        <EntityType Name="Klient">
+          <Key>
+            <PropertyRef Name="Users_Klient_ID" />
+          </Key>
+          <Property Name="Klient_Last_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Klient_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Klient_Address" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Klient_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Klient_Middle_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Users_Klient_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Klient_Users" FromRole="Klient" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Mark">
+          <Key>
+            <PropertyRef Name="ID_Mark" />
+          </Key>
+          <Property Name="ID_Mark" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mark_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Model" Relationship="Self.Mark_ID" FromRole="Mark" ToRole="Model" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="ID_Model" />
+          </Key>
+          <Property Name="ID_Model" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Model_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mark_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Mark" Relationship="Self.Mark_ID" FromRole="Model" ToRole="Mark" />
+          <NavigationProperty Name="Tovar" Relationship="Self.Model_ID" FromRole="Model" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID_Order" />
+          </Key>
+          <Property Name="ID_Order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Order_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Order_Amount" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Order_Number" Type="Int32" Nullable="false" />
+          <Property Name="Order_Status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Service_Delivery_Assembly_ID" Type="Int32" Nullable="false" />
+          <Property Name="Tovar_ID" Type="Int32" Nullable="false" />
+          <Property Name="Users_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Service_Delivery_Assembly" Relationship="Self.Service_Delivery_Assembly_ID" FromRole="Order" ToRole="Service_Delivery_Assembly" />
+          <NavigationProperty Name="Tovar" Relationship="Self.Tovar_ID" FromRole="Order" ToRole="Tovar" />
+          <NavigationProperty Name="Users" Relationship="Self.Users_ID" FromRole="Order" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Pay">
+          <Key>
+            <PropertyRef Name="ID_Pay" />
+          </Key>
+          <Property Name="ID_Pay" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pay_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Pay_Money" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Users_Pay_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.Users_Pay_ID" FromRole="Pay" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="ID_Request" />
+          </Key>
+          <Property Name="ID_Request" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Request_Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Request_Date_Start" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Request_Date_End" Type="DateTime" Precision="3" />
+          <Property Name="Request_Status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Users_Request_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Buy" Relationship="Self.Request_ID" FromRole="Request" ToRole="Buy" />
+          <NavigationProperty Name="Buy_History" Relationship="Self.Request_ID_History" FromRole="Request" ToRole="Buy_History" />
+          <NavigationProperty Name="Users" Relationship="Self.Users_Request_ID" FromRole="Request" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Request_History">
+          <Key>
+            <PropertyRef Name="ID_Request_History" />
+          </Key>
+          <Property Name="ID_Request_History" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Request_Desc_History" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Request_Date_Start_History" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Request_Date_End_History" Type="DateTime" Precision="3" />
+          <Property Name="Request_Status_History" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Users_Request_ID_History" Type="Int32" Nullable="false" />
+          <Property Name="Date_Create" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Users" Relationship="Self.Users_Request_ID_History" FromRole="Request_History" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="ID_Roles" />
+          </Key>
+          <Property Name="ID_Roles" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Roles_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Sotrudniki" Relationship="Self.Roles_ID" FromRole="Roles" ToRole="Sotrudniki" />
+        </EntityType>
+        <EntityType Name="Service_Delivery_Assembly">
+          <Key>
+            <PropertyRef Name="ID_Service_Delivery_Assembly" />
+          </Key>
+          <Property Name="ID_Service_Delivery_Assembly" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Service_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Service_Country" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Service_Price" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Service_Period" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.Service_Delivery_Assembly_ID" FromRole="Service_Delivery_Assembly" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Sklad">
+          <Key>
+            <PropertyRef Name="ID_Sklad" />
+          </Key>
+          <Property Name="ID_Sklad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sklad_Address" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sklad_Sity" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sklad_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tovar" Relationship="Self.Sklad_ID" FromRole="Sklad" ToRole="Tovar" />
+          <NavigationProperty Name="Users" Relationship="Self.Sklad_Worker" FromRole="Sklad" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Sklad_History">
+          <Key>
+            <PropertyRef Name="ID_Sklad_History" />
+          </Key>
+          <Property Name="ID_Sklad_History" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sklad_Address_History" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sklad_Sity_History" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sklad_Name_History" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date_Create" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Sort">
+          <Key>
+            <PropertyRef Name="ID_Sort" />
+          </Key>
+          <Property Name="ID_Sort" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sort_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tovar" Relationship="Self.Sort_ID" FromRole="Sort" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="Sotrudniki">
+          <Key>
+            <PropertyRef Name="Users_Sotrudniki_ID" />
+          </Key>
+          <Property Name="Sotrudniki_Last_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sotrudniki_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sotrudniki_Education" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sotrudniki_Experience" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sotrudniki_Age" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sotrudniki_Language" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sotrudniki_Middle_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sotrudniki_Money" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Users_Sotrudniki_ID" Type="Int32" Nullable="false" />
+          <Property Name="Roles_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="Self.Roles_ID" FromRole="Sotrudniki" ToRole="Roles" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Sotrudniki_Users" FromRole="Sotrudniki" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Special">
+          <Key>
+            <PropertyRef Name="ID_Special" />
+          </Key>
+          <Property Name="ID_Special" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Special_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Contractor" Relationship="Self.Special_ID" FromRole="Special" ToRole="Contractor" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tovar">
+          <Key>
+            <PropertyRef Name="ID_Tovar" />
+          </Key>
+          <Property Name="ID_Tovar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tovar_Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tovar_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tovar_Colour" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tovar_Size" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tovar_Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tovar_Country" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sklad_ID" Type="Int32" Nullable="false" />
+          <Property Name="Model_ID" Type="Int32" Nullable="false" />
+          <Property Name="Sort_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Model" Relationship="Self.Model_ID" FromRole="Tovar" ToRole="Model" />
+          <NavigationProperty Name="Order" Relationship="Self.Tovar_ID" FromRole="Tovar" ToRole="Order" />
+          <NavigationProperty Name="Sklad" Relationship="Self.Sklad_ID" FromRole="Tovar" ToRole="Sklad" />
+          <NavigationProperty Name="Sort" Relationship="Self.Sort_ID" FromRole="Tovar" ToRole="Sort" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID_Users" />
+          </Key>
+          <Property Name="ID_Users" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Users_Login" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Users_Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Users_Email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Users_Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_Admin_Users" FromRole="Users" ToRole="Admin" />
+          <NavigationProperty Name="Buy" Relationship="Self.Users_Buy_ID" FromRole="Users" ToRole="Buy" />
+          <NavigationProperty Name="Buy_History" Relationship="Self.Users_Buy_ID_History" FromRole="Users" ToRole="Buy_History" />
+          <NavigationProperty Name="Klient" Relationship="Self.FK_Klient_Users" FromRole="Users" ToRole="Klient" />
+          <NavigationProperty Name="Order" Relationship="Self.Users_ID" FromRole="Users" ToRole="Order" />
+          <NavigationProperty Name="Pay" Relationship="Self.Users_Pay_ID" FromRole="Users" ToRole="Pay" />
+          <NavigationProperty Name="Request" Relationship="Self.Users_Request_ID" FromRole="Users" ToRole="Request" />
+          <NavigationProperty Name="Request_History" Relationship="Self.Users_Request_ID_History" FromRole="Users" ToRole="Request_History" />
+          <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_Sotrudniki_Users" FromRole="Users" ToRole="Sotrudniki" />
+          <NavigationProperty Name="Sklad" Relationship="Self.Sklad_Worker" FromRole="Users" ToRole="Sklad" />
+        </EntityType>
+        <EntityType Name="View_1">
+          <Key>
+            <PropertyRef Name="ID_Model" />
+            <PropertyRef Name="Model_Name" />
+            <PropertyRef Name="Mark_ID" />
+            <PropertyRef Name="Mark_Name" />
+          </Key>
+          <Property Name="ID_Model" Type="Int32" Nullable="false" />
+          <Property Name="Model_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mark_ID" Type="Int32" Nullable="false" />
+          <Property Name="Mark_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Admin_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="Users_Admin_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Contractor_ID">
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Buy" Type="Self.Buy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contractor">
+              <PropertyRef Name="ID_Contractor" />
+            </Principal>
+            <Dependent Role="Buy">
+              <PropertyRef Name="Contractor_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Request_ID">
+          <End Role="Request" Type="Self.Request" Multiplicity="1" />
+          <End Role="Buy" Type="Self.Buy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request">
+              <PropertyRef Name="ID_Request" />
+            </Principal>
+            <Dependent Role="Buy">
+              <PropertyRef Name="Request_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Users_Buy_ID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Buy" Type="Self.Buy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Buy">
+              <PropertyRef Name="Users_Buy_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Contractor_ID_History">
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Buy_History" Type="Self.Buy_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contractor">
+              <PropertyRef Name="ID_Contractor" />
+            </Principal>
+            <Dependent Role="Buy_History">
+              <PropertyRef Name="Contractor_ID_History" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Request_ID_History">
+          <End Role="Request" Type="Self.Request" Multiplicity="1" />
+          <End Role="Buy_History" Type="Self.Buy_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request">
+              <PropertyRef Name="ID_Request" />
+            </Principal>
+            <Dependent Role="Buy_History">
+              <PropertyRef Name="Request_ID_History" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Users_Buy_ID_History">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Buy_History" Type="Self.Buy_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Buy_History">
+              <PropertyRef Name="Users_Buy_ID_History" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Special_ID">
+          <End Role="Special" Type="Self.Special" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Special">
+              <PropertyRef Name="ID_Special" />
+            </Principal>
+            <Dependent Role="Contractor">
+              <PropertyRef Name="Special_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Klient_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Klient" Type="Self.Klient" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Klient">
+              <PropertyRef Name="Users_Klient_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Mark_ID">
+          <End Role="Mark" Type="Self.Mark" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Model" Type="Self.Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mark">
+              <PropertyRef Name="ID_Mark" />
+            </Principal>
+            <Dependent Role="Model">
+              <PropertyRef Name="Mark_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Model_ID">
+          <End Role="Model" Type="Self.Model" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="ID_Model" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="Model_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Service_Delivery_Assembly_ID">
+          <End Role="Service_Delivery_Assembly" Type="Self.Service_Delivery_Assembly" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service_Delivery_Assembly">
+              <PropertyRef Name="ID_Service_Delivery_Assembly" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Service_Delivery_Assembly_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Tovar_ID">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID_Tovar" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Tovar_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Users_ID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Users_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Users_Pay_ID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Pay" Type="Self.Pay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Pay">
+              <PropertyRef Name="Users_Pay_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Users_Request_ID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="Users_Request_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Users_Request_ID_History">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Request_History" Type="Self.Request_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Request_History">
+              <PropertyRef Name="Users_Request_ID_History" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Roles_ID">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID_Roles" />
+            </Principal>
+            <Dependent Role="Sotrudniki">
+              <PropertyRef Name="Roles_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Sklad_ID">
+          <End Role="Sklad" Type="Self.Sklad" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sklad">
+              <PropertyRef Name="ID_Sklad" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="Sklad_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Sort_ID">
+          <End Role="Sort" Type="Self.Sort" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sort">
+              <PropertyRef Name="ID_Sort" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="Sort_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudniki_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_Users" />
+            </Principal>
+            <Dependent Role="Sotrudniki">
+              <PropertyRef Name="Users_Sotrudniki_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Sklad_Worker">
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <End Role="Sklad" Type="Self.Sklad" Multiplicity="0..1" />
+        </Association>
+        <EntityContainer Name="Kitchen_ShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin" EntityType="Self.Admin" />
+          <EntitySet Name="Backup_All" EntityType="Self.Backup_All" />
+          <EntitySet Name="Buy" EntityType="Self.Buy" />
+          <EntitySet Name="Buy_History" EntityType="Self.Buy_History" />
+          <EntitySet Name="Contractor" EntityType="Self.Contractor" />
+          <EntitySet Name="Klient" EntityType="Self.Klient" />
+          <EntitySet Name="Mark" EntityType="Self.Mark" />
+          <EntitySet Name="Model" EntityType="Self.Model" />
+          <EntitySet Name="Order" EntityType="Self.Order" />
+          <EntitySet Name="Pay" EntityType="Self.Pay" />
+          <EntitySet Name="Request" EntityType="Self.Request" />
+          <EntitySet Name="Request_History" EntityType="Self.Request_History" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Service_Delivery_Assembly" EntityType="Self.Service_Delivery_Assembly" />
+          <EntitySet Name="Sklad" EntityType="Self.Sklad" />
+          <EntitySet Name="Sklad_History" EntityType="Self.Sklad_History" />
+          <EntitySet Name="Sort" EntityType="Self.Sort" />
+          <EntitySet Name="Sotrudniki" EntityType="Self.Sotrudniki" />
+          <EntitySet Name="Special" EntityType="Self.Special" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tovar" EntityType="Self.Tovar" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="View_1" EntityType="Self.View_1" />
+          <AssociationSet Name="FK_Admin_Users" Association="Self.FK_Admin_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="Contractor_ID" Association="Self.Contractor_ID">
+            <End Role="Contractor" EntitySet="Contractor" />
+            <End Role="Buy" EntitySet="Buy" />
+          </AssociationSet>
+          <AssociationSet Name="Request_ID" Association="Self.Request_ID">
+            <End Role="Request" EntitySet="Request" />
+            <End Role="Buy" EntitySet="Buy" />
+          </AssociationSet>
+          <AssociationSet Name="Users_Buy_ID" Association="Self.Users_Buy_ID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Buy" EntitySet="Buy" />
+          </AssociationSet>
+          <AssociationSet Name="Contractor_ID_History" Association="Self.Contractor_ID_History">
+            <End Role="Contractor" EntitySet="Contractor" />
+            <End Role="Buy_History" EntitySet="Buy_History" />
+          </AssociationSet>
+          <AssociationSet Name="Request_ID_History" Association="Self.Request_ID_History">
+            <End Role="Request" EntitySet="Request" />
+            <End Role="Buy_History" EntitySet="Buy_History" />
+          </AssociationSet>
+          <AssociationSet Name="Users_Buy_ID_History" Association="Self.Users_Buy_ID_History">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Buy_History" EntitySet="Buy_History" />
+          </AssociationSet>
+          <AssociationSet Name="Special_ID" Association="Self.Special_ID">
+            <End Role="Special" EntitySet="Special" />
+            <End Role="Contractor" EntitySet="Contractor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Klient_Users" Association="Self.FK_Klient_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Klient" EntitySet="Klient" />
+          </AssociationSet>
+          <AssociationSet Name="Mark_ID" Association="Self.Mark_ID">
+            <End Role="Mark" EntitySet="Mark" />
+            <End Role="Model" EntitySet="Model" />
+          </AssociationSet>
+          <AssociationSet Name="Model_ID" Association="Self.Model_ID">
+            <End Role="Model" EntitySet="Model" />
+            <End Role="Tovar" EntitySet="Tovar" />
+          </AssociationSet>
+          <AssociationSet Name="Service_Delivery_Assembly_ID" Association="Self.Service_Delivery_Assembly_ID">
+            <End Role="Service_Delivery_Assembly" EntitySet="Service_Delivery_Assembly" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="Tovar_ID" Association="Self.Tovar_ID">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="Users_ID" Association="Self.Users_ID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="Users_Pay_ID" Association="Self.Users_Pay_ID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Pay" EntitySet="Pay" />
+          </AssociationSet>
+          <AssociationSet Name="Users_Request_ID" Association="Self.Users_Request_ID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="Users_Request_ID_History" Association="Self.Users_Request_ID_History">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Request_History" EntitySet="Request_History" />
+          </AssociationSet>
+          <AssociationSet Name="Roles_ID" Association="Self.Roles_ID">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+          </AssociationSet>
+          <AssociationSet Name="Sklad_ID" Association="Self.Sklad_ID">
+            <End Role="Sklad" EntitySet="Sklad" />
+            <End Role="Tovar" EntitySet="Tovar" />
+          </AssociationSet>
+          <AssociationSet Name="Sort_ID" Association="Self.Sort_ID">
+            <End Role="Sort" EntitySet="Sort" />
+            <End Role="Tovar" EntitySet="Tovar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudniki_Users" Association="Self.FK_Sotrudniki_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+          </AssociationSet>
+          <AssociationSet Name="Sklad_Worker" Association="Self.Sklad_Worker">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Sklad" EntitySet="Sklad" />
+          </AssociationSet>
+          <FunctionImport Name="backup_insert">
+            <Parameter Name="Backup_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Buy_insert">
+            <Parameter Name="Buy_Plus" Mode="In" Type="String" />
+            <Parameter Name="Buy_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Buy_Money" Mode="In" Type="String" />
+            <Parameter Name="Users" Mode="In" Type="Int32" />
+            <Parameter Name="Contractor" Mode="In" Type="Int32" />
+            <Parameter Name="Request" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="contractor_delete">
+            <Parameter Name="ID_Contractor" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="contractor_insert">
+            <Parameter Name="Special_Name" Mode="In" Type="String" />
+            <Parameter Name="Contractor_Name" Mode="In" Type="String" />
+            <Parameter Name="Contractor_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Contractor_Status" Mode="In" Type="String" />
+            <Parameter Name="Contractor_Desc" Mode="In" Type="String" />
+            <Parameter Name="Special" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="contractor_update">
+            <Parameter Name="Contractor_Name" Mode="In" Type="String" />
+            <Parameter Name="Contractor_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Contractor_Status" Mode="In" Type="String" />
+            <Parameter Name="Contractor_Desc" Mode="In" Type="String" />
+            <Parameter Name="ID_Contractor" Mode="In" Type="Int32" />
+            <Parameter Name="Special" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="contractor_update_end">
+            <Parameter Name="ID_Contractor" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="klient_delete">
+            <Parameter Name="ID_Klient" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="klient_insert">
+            <Parameter Name="Users_Login" Mode="In" Type="String" />
+            <Parameter Name="Klient_Last_Name" Mode="In" Type="String" />
+            <Parameter Name="Klient_Name" Mode="In" Type="String" />
+            <Parameter Name="Klient_Address" Mode="In" Type="String" />
+            <Parameter Name="Klient_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Klient_Middle_Name" Mode="In" Type="String" />
+            <Parameter Name="Users_Klient_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="klient_update">
+            <Parameter Name="ID_Users" Mode="In" Type="Int32" />
+            <Parameter Name="Klient_Last_Name" Mode="In" Type="String" />
+            <Parameter Name="Klient_Name" Mode="In" Type="String" />
+            <Parameter Name="Klient_Address" Mode="In" Type="String" />
+            <Parameter Name="Klient_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Klient_Middle_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="mark_delete">
+            <Parameter Name="Mark_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="mark_insert">
+            <Parameter Name="Mark_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="mark_update">
+            <Parameter Name="ID_Mark" Mode="In" Type="Int32" />
+            <Parameter Name="Mark_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="model_delete">
+            <Parameter Name="ID_Model" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="model_insert">
+            <Parameter Name="Model_Name" Mode="In" Type="String" />
+            <Parameter Name="Mark_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="model_insert_mark">
+            <Parameter Name="Name_Mark" Mode="In" Type="String" />
+            <Parameter Name="Model_Name" Mode="In" Type="String" />
+            <Parameter Name="Mark" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="model_update">
+            <Parameter Name="ID_Model" Mode="In" Type="Int32" />
+            <Parameter Name="Model_Name" Mode="In" Type="String" />
+            <Parameter Name="Mark_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="model_update_s">
+            <Parameter Name="ID_Model" Mode="In" Type="Int32" />
+            <Parameter Name="Model_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="order_insert">
+            <Parameter Name="Order_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Order_Amount" Mode="In" Type="String" />
+            <Parameter Name="Order_Number" Mode="In" Type="Int32" />
+            <Parameter Name="Order_Status" Mode="In" Type="String" />
+            <Parameter Name="Service" Mode="In" Type="Int32" />
+            <Parameter Name="Tovar" Mode="In" Type="Int32" />
+            <Parameter Name="Users" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="order_update">
+            <Parameter Name="ID_Order" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pay_insert">
+            <Parameter Name="Pay_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Pay_Money" Mode="In" Type="String" />
+            <Parameter Name="Users" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="request_insert">
+            <Parameter Name="Request_Desc" Mode="In" Type="String" />
+            <Parameter Name="Request_Date_Start" Mode="In" Type="DateTime" />
+            <Parameter Name="Request_Date_End" Mode="In" Type="DateTime" />
+            <Parameter Name="Request_Status" Mode="In" Type="String" />
+            <Parameter Name="Users_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="request_update">
+            <Parameter Name="ID_Request" Mode="In" Type="Int32" />
+            <Parameter Name="Date_End" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="roles_delete">
+            <Parameter Name="Roles_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="roles_insert">
+            <Parameter Name="Roles_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="roles_update">
+            <Parameter Name="ID_Roles" Mode="In" Type="Int32" />
+            <Parameter Name="Roles_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="service_delete">
+            <Parameter Name="ID_Service" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="service_insert">
+            <Parameter Name="Service_Name" Mode="In" Type="String" />
+            <Parameter Name="Service_Country" Mode="In" Type="String" />
+            <Parameter Name="Service_Price" Mode="In" Type="String" />
+            <Parameter Name="Service_Period" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="service_update">
+            <Parameter Name="ID_Service" Mode="In" Type="Int32" />
+            <Parameter Name="Service_Name" Mode="In" Type="String" />
+            <Parameter Name="Service_Country" Mode="In" Type="String" />
+            <Parameter Name="Service_Price" Mode="In" Type="String" />
+            <Parameter Name="Service_Period" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sklad_delete">
+            <Parameter Name="ID_Sklad" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sklad_insert_new">
+            <Parameter Name="Sklad_Address" Mode="In" Type="String" />
+            <Parameter Name="Sklad_Sity" Mode="In" Type="String" />
+            <Parameter Name="Sklad_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sklad_update">
+            <Parameter Name="ID_Sklad" Mode="In" Type="Int32" />
+            <Parameter Name="Sklad_Address" Mode="In" Type="String" />
+            <Parameter Name="Sklad_Sity" Mode="In" Type="String" />
+            <Parameter Name="Sklad_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sort_delete">
+            <Parameter Name="Sort_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sort_insert">
+            <Parameter Name="Sort_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sort_update">
+            <Parameter Name="ID_Sort" Mode="In" Type="Int32" />
+            <Parameter Name="Sort_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sotrudniki_delete">
+            <Parameter Name="ID_Sotrudniki" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sotrudniki_insert">
+            <Parameter Name="Users_Login" Mode="In" Type="String" />
+            <Parameter Name="Sotrudniki_Last_Name" Mode="In" Type="String" />
+            <Parameter Name="Sotrudniki_Name" Mode="In" Type="String" />
+            <Parameter Name="Sotrudniki_Education" Mode="In" Type="String" />
+            <Parameter Name="Sotrudniki_Experience" Mode="In" Type="String" />
+            <Parameter Name="Sotrudniki_Age" Mode="In" Type="String" />
+            <Parameter Name="Sotrudniki_Language" Mode="In" Type="String" />
+            <Parameter Name="Sotrudniki_Middle_Name" Mode="In" Type="String" />
+            <Parameter Name="Sotrudniki_Money" Mode="In" Type="String" />
+            <Parameter Name="Users_Sotrudniki_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Roles_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sotrudniki_update">
+            <Parameter Name="ID_Sotrudniki" Mode="In" Type="Int32" />
+            <Parameter Name="Sotrudniki_Last_Name" Mode="In" Type="String" />
+            <Parameter Name="Sotrudniki_Name" Mode="In" Type="String" />
+            <Parameter Name="Sotrudniki_Education" Mode="In" Type="String" />
+            <Parameter Name="Sotrudniki_Experience" Mode="In" Type="String" />
+            <Parameter Name="Sotrudniki_Age" Mode="In" Type="String" />
+            <Parameter Name="Sotrudniki_Language" Mode="In" Type="String" />
+            <Parameter Name="Sotrudniki_Middle_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Kitchen_ShopModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Kitchen_ShopModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="special_delete">
+            <Parameter Name="Special_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="special_insert">
+            <Parameter Name="Special_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="special_update">
+            <Parameter Name="ID_Special" Mode="In" Type="Int32" />
+            <Parameter Name="Special_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="tovar_delete">
+            <Parameter Name="ID_Tovar" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="tovar_insert">
+            <Parameter Name="Tovar_Image" Mode="In" Type="String" />
+            <Parameter Name="Tovar_Name" Mode="In" Type="String" />
+            <Parameter Name="Tovar_Colour" Mode="In" Type="String" />
+            <Parameter Name="Tovar_Size" Mode="In" Type="String" />
+            <Parameter Name="Tovar_Desc" Mode="In" Type="String" />
+            <Parameter Name="Tovar_Country" Mode="In" Type="String" />
+            <Parameter Name="Sklad_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Model_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Sort_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Users_delete">
+            <Parameter Name="ID_Users" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="users_insert">
+            <Parameter Name="Users_Login" Mode="In" Type="String" />
+            <Parameter Name="Users_Password" Mode="In" Type="String" />
+            <Parameter Name="Users_Email" Mode="In" Type="String" />
+            <Parameter Name="Users_Status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="users_update">
+            <Parameter Name="ID_Users" Mode="In" Type="Int32" />
+            <Parameter Name="Users_Login" Mode="In" Type="String" />
+            <Parameter Name="Users_Password" Mode="In" Type="String" />
+            <Parameter Name="Users_Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="users_update_block">
+            <Parameter Name="ID_Users" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Kitchen_ShopModelContainer" CdmEntityContainer="Kitchen_ShopEntities">
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Klient_Nickname" ColumnName="Klient_Nickname" />
+                <ScalarProperty Name="Users_Admin_ID" ColumnName="Users_Admin_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Backup_All">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Backup_All">
+              <MappingFragment StoreEntitySet="Backup_All">
+                <ScalarProperty Name="ID_Buckup" ColumnName="ID_Buckup" />
+                <ScalarProperty Name="Backup_Name" ColumnName="Backup_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buy">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Buy">
+              <MappingFragment StoreEntitySet="Buy">
+                <ScalarProperty Name="ID_Buy" ColumnName="ID_Buy" />
+                <ScalarProperty Name="Buy_Date" ColumnName="Buy_Date" />
+                <ScalarProperty Name="Buy_Plus" ColumnName="Buy_Plus" />
+                <ScalarProperty Name="Buy_Money" ColumnName="Buy_Money" />
+                <ScalarProperty Name="Users_Buy_ID" ColumnName="Users_Buy_ID" />
+                <ScalarProperty Name="Contractor_ID" ColumnName="Contractor_ID" />
+                <ScalarProperty Name="Request_ID" ColumnName="Request_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buy_History">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Buy_History">
+              <MappingFragment StoreEntitySet="Buy_History">
+                <ScalarProperty Name="ID_Buy_History" ColumnName="ID_Buy_History" />
+                <ScalarProperty Name="Buy_Date_History" ColumnName="Buy_Date_History" />
+                <ScalarProperty Name="Buy_Plus_History" ColumnName="Buy_Plus_History" />
+                <ScalarProperty Name="Buy_Money_History" ColumnName="Buy_Money_History" />
+                <ScalarProperty Name="Users_Buy_ID_History" ColumnName="Users_Buy_ID_History" />
+                <ScalarProperty Name="Contractor_ID_History" ColumnName="Contractor_ID_History" />
+                <ScalarProperty Name="Request_ID_History" ColumnName="Request_ID_History" />
+                <ScalarProperty Name="Date_Create" ColumnName="Date_Create" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contractor">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Contractor">
+              <MappingFragment StoreEntitySet="Contractor">
+                <ScalarProperty Name="ID_Contractor" ColumnName="ID_Contractor" />
+                <ScalarProperty Name="Contractor_Name" ColumnName="Contractor_Name" />
+                <ScalarProperty Name="Contractor_Date" ColumnName="Contractor_Date" />
+                <ScalarProperty Name="Contractor_Status" ColumnName="Contractor_Status" />
+                <ScalarProperty Name="Contractor_Desc" ColumnName="Contractor_Desc" />
+                <ScalarProperty Name="Special_ID" ColumnName="Special_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Klient">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Klient">
+              <MappingFragment StoreEntitySet="Klient">
+                <ScalarProperty Name="Klient_Last_Name" ColumnName="Klient_Last_Name" />
+                <ScalarProperty Name="Klient_Name" ColumnName="Klient_Name" />
+                <ScalarProperty Name="Klient_Address" ColumnName="Klient_Address" />
+                <ScalarProperty Name="Klient_Date" ColumnName="Klient_Date" />
+                <ScalarProperty Name="Klient_Middle_Name" ColumnName="Klient_Middle_Name" />
+                <ScalarProperty Name="Users_Klient_ID" ColumnName="Users_Klient_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mark">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Mark">
+              <MappingFragment StoreEntitySet="Mark">
+                <ScalarProperty Name="ID_Mark" ColumnName="ID_Mark" />
+                <ScalarProperty Name="Mark_Name" ColumnName="Mark_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Model">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Model">
+              <MappingFragment StoreEntitySet="Model">
+                <ScalarProperty Name="ID_Model" ColumnName="ID_Model" />
+                <ScalarProperty Name="Model_Name" ColumnName="Model_Name" />
+                <ScalarProperty Name="Mark_ID" ColumnName="Mark_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
+                <ScalarProperty Name="Order_Date" ColumnName="Order_Date" />
+                <ScalarProperty Name="Order_Amount" ColumnName="Order_Amount" />
+                <ScalarProperty Name="Order_Number" ColumnName="Order_Number" />
+                <ScalarProperty Name="Order_Status" ColumnName="Order_Status" />
+                <ScalarProperty Name="Service_Delivery_Assembly_ID" ColumnName="Service_Delivery_Assembly_ID" />
+                <ScalarProperty Name="Tovar_ID" ColumnName="Tovar_ID" />
+                <ScalarProperty Name="Users_ID" ColumnName="Users_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pay">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Pay">
+              <MappingFragment StoreEntitySet="Pay">
+                <ScalarProperty Name="ID_Pay" ColumnName="ID_Pay" />
+                <ScalarProperty Name="Pay_Date" ColumnName="Pay_Date" />
+                <ScalarProperty Name="Pay_Money" ColumnName="Pay_Money" />
+                <ScalarProperty Name="Users_Pay_ID" ColumnName="Users_Pay_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Request">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Request">
+              <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="ID_Request" ColumnName="ID_Request" />
+                <ScalarProperty Name="Request_Desc" ColumnName="Request_Desc" />
+                <ScalarProperty Name="Request_Date_Start" ColumnName="Request_Date_Start" />
+                <ScalarProperty Name="Request_Date_End" ColumnName="Request_Date_End" />
+                <ScalarProperty Name="Request_Status" ColumnName="Request_Status" />
+                <ScalarProperty Name="Users_Request_ID" ColumnName="Users_Request_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Request_History">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Request_History">
+              <MappingFragment StoreEntitySet="Request_History">
+                <ScalarProperty Name="ID_Request_History" ColumnName="ID_Request_History" />
+                <ScalarProperty Name="Request_Desc_History" ColumnName="Request_Desc_History" />
+                <ScalarProperty Name="Request_Date_Start_History" ColumnName="Request_Date_Start_History" />
+                <ScalarProperty Name="Request_Date_End_History" ColumnName="Request_Date_End_History" />
+                <ScalarProperty Name="Request_Status_History" ColumnName="Request_Status_History" />
+                <ScalarProperty Name="Users_Request_ID_History" ColumnName="Users_Request_ID_History" />
+                <ScalarProperty Name="Date_Create" ColumnName="Date_Create" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="ID_Roles" ColumnName="ID_Roles" />
+                <ScalarProperty Name="Roles_Name" ColumnName="Roles_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Service_Delivery_Assembly">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Service_Delivery_Assembly">
+              <MappingFragment StoreEntitySet="Service_Delivery_Assembly">
+                <ScalarProperty Name="ID_Service_Delivery_Assembly" ColumnName="ID_Service_Delivery_Assembly" />
+                <ScalarProperty Name="Service_Name" ColumnName="Service_Name" />
+                <ScalarProperty Name="Service_Country" ColumnName="Service_Country" />
+                <ScalarProperty Name="Service_Price" ColumnName="Service_Price" />
+                <ScalarProperty Name="Service_Period" ColumnName="Service_Period" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sklad">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Sklad">
+              <MappingFragment StoreEntitySet="Sklad">
+                <ScalarProperty Name="ID_Sklad" ColumnName="ID_Sklad" />
+                <ScalarProperty Name="Sklad_Address" ColumnName="Sklad_Address" />
+                <ScalarProperty Name="Sklad_Sity" ColumnName="Sklad_Sity" />
+                <ScalarProperty Name="Sklad_Name" ColumnName="Sklad_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sklad_History">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Sklad_History">
+              <MappingFragment StoreEntitySet="Sklad_History">
+                <ScalarProperty Name="ID_Sklad_History" ColumnName="ID_Sklad_History" />
+                <ScalarProperty Name="Sklad_Address_History" ColumnName="Sklad_Address_History" />
+                <ScalarProperty Name="Sklad_Sity_History" ColumnName="Sklad_Sity_History" />
+                <ScalarProperty Name="Sklad_Name_History" ColumnName="Sklad_Name_History" />
+                <ScalarProperty Name="Date_Create" ColumnName="Date_Create" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sort">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Sort">
+              <MappingFragment StoreEntitySet="Sort">
+                <ScalarProperty Name="ID_Sort" ColumnName="ID_Sort" />
+                <ScalarProperty Name="Sort_Name" ColumnName="Sort_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sotrudniki">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Sotrudniki">
+              <MappingFragment StoreEntitySet="Sotrudniki">
+                <ScalarProperty Name="Sotrudniki_Last_Name" ColumnName="Sotrudniki_Last_Name" />
+                <ScalarProperty Name="Sotrudniki_Name" ColumnName="Sotrudniki_Name" />
+                <ScalarProperty Name="Sotrudniki_Education" ColumnName="Sotrudniki_Education" />
+                <ScalarProperty Name="Sotrudniki_Experience" ColumnName="Sotrudniki_Experience" />
+                <ScalarProperty Name="Sotrudniki_Age" ColumnName="Sotrudniki_Age" />
+                <ScalarProperty Name="Sotrudniki_Language" ColumnName="Sotrudniki_Language" />
+                <ScalarProperty Name="Sotrudniki_Middle_Name" ColumnName="Sotrudniki_Middle_Name" />
+                <ScalarProperty Name="Sotrudniki_Money" ColumnName="Sotrudniki_Money" />
+                <ScalarProperty Name="Users_Sotrudniki_ID" ColumnName="Users_Sotrudniki_ID" />
+                <ScalarProperty Name="Roles_ID" ColumnName="Roles_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Special">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Special">
+              <MappingFragment StoreEntitySet="Special">
+                <ScalarProperty Name="ID_Special" ColumnName="ID_Special" />
+                <ScalarProperty Name="Special_Name" ColumnName="Special_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tovar">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Tovar">
+              <MappingFragment StoreEntitySet="Tovar">
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="Tovar_Image" ColumnName="Tovar_Image" />
+                <ScalarProperty Name="Tovar_Name" ColumnName="Tovar_Name" />
+                <ScalarProperty Name="Tovar_Colour" ColumnName="Tovar_Colour" />
+                <ScalarProperty Name="Tovar_Size" ColumnName="Tovar_Size" />
+                <ScalarProperty Name="Tovar_Desc" ColumnName="Tovar_Desc" />
+                <ScalarProperty Name="Tovar_Country" ColumnName="Tovar_Country" />
+                <ScalarProperty Name="Sklad_ID" ColumnName="Sklad_ID" />
+                <ScalarProperty Name="Model_ID" ColumnName="Model_ID" />
+                <ScalarProperty Name="Sort_ID" ColumnName="Sort_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID_Users" ColumnName="ID_Users" />
+                <ScalarProperty Name="Users_Login" ColumnName="Users_Login" />
+                <ScalarProperty Name="Users_Password" ColumnName="Users_Password" />
+                <ScalarProperty Name="Users_Email" ColumnName="Users_Email" />
+                <ScalarProperty Name="Users_Status" ColumnName="Users_Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_1">
+            <EntityTypeMapping TypeName="Kitchen_ShopModel.View_1">
+              <MappingFragment StoreEntitySet="View_1">
+                <ScalarProperty Name="ID_Model" ColumnName="ID_Model" />
+                <ScalarProperty Name="Model_Name" ColumnName="Model_Name" />
+                <ScalarProperty Name="Mark_ID" ColumnName="Mark_ID" />
+                <ScalarProperty Name="Mark_Name" ColumnName="Mark_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Sklad_Worker" TypeName="Kitchen_ShopModel.Sklad_Worker" StoreEntitySet="Sklad_Worker">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="ID_Users" ColumnName="Users_Sklad_ID" />
+            </EndProperty>
+            <EndProperty Name="Sklad">
+              <ScalarProperty Name="ID_Sklad" ColumnName="Sklad_Worker_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="backup_insert" FunctionName="Хранилище Kitchen_ShopModel.backup_insert" />
+          <FunctionImportMapping FunctionImportName="Buy_insert" FunctionName="Хранилище Kitchen_ShopModel.Buy_insert" />
+          <FunctionImportMapping FunctionImportName="contractor_delete" FunctionName="Хранилище Kitchen_ShopModel.contractor_delete" />
+          <FunctionImportMapping FunctionImportName="contractor_insert" FunctionName="Хранилище Kitchen_ShopModel.contractor_insert" />
+          <FunctionImportMapping FunctionImportName="contractor_update" FunctionName="Хранилище Kitchen_ShopModel.contractor_update" />
+          <FunctionImportMapping FunctionImportName="contractor_update_end" FunctionName="Хранилище Kitchen_ShopModel.contractor_update_end" />
+          <FunctionImportMapping FunctionImportName="klient_delete" FunctionName="Хранилище Kitchen_ShopModel.klient_delete" />
+          <FunctionImportMapping FunctionImportName="klient_insert" FunctionName="Хранилище Kitchen_ShopModel.klient_insert" />
+          <FunctionImportMapping FunctionImportName="klient_update" FunctionName="Хранилище Kitchen_ShopModel.klient_update" />
+          <FunctionImportMapping FunctionImportName="mark_delete" FunctionName="Хранилище Kitchen_ShopModel.mark_delete" />
+          <FunctionImportMapping FunctionImportName="mark_insert" FunctionName="Хранилище Kitchen_ShopModel.mark_insert" />
+          <FunctionImportMapping FunctionImportName="mark_update" FunctionName="Хранилище Kitchen_ShopModel.mark_update" />
+          <FunctionImportMapping FunctionImportName="model_delete" FunctionName="Хранилище Kitchen_ShopModel.model_delete" />
+          <FunctionImportMapping FunctionImportName="model_insert" FunctionName="Хранилище Kitchen_ShopModel.model_insert" />
+          <FunctionImportMapping FunctionImportName="model_insert_mark" FunctionName="Хранилище Kitchen_ShopModel.model_insert_mark" />
+          <FunctionImportMapping FunctionImportName="model_update" FunctionName="Хранилище Kitchen_ShopModel.model_update" />
+          <FunctionImportMapping FunctionImportName="model_update_s" FunctionName="Хранилище Kitchen_ShopModel.model_update_s" />
+          <FunctionImportMapping FunctionImportName="order_insert" FunctionName="Хранилище Kitchen_ShopModel.order_insert" />
+          <FunctionImportMapping FunctionImportName="order_update" FunctionName="Хранилище Kitchen_ShopModel.order_update" />
+          <FunctionImportMapping FunctionImportName="pay_insert" FunctionName="Хранилище Kitchen_ShopModel.pay_insert" />
+          <FunctionImportMapping FunctionImportName="request_insert" FunctionName="Хранилище Kitchen_ShopModel.request_insert" />
+          <FunctionImportMapping FunctionImportName="request_update" FunctionName="Хранилище Kitchen_ShopModel.request_update" />
+          <FunctionImportMapping FunctionImportName="roles_delete" FunctionName="Хранилище Kitchen_ShopModel.roles_delete" />
+          <FunctionImportMapping FunctionImportName="roles_insert" FunctionName="Хранилище Kitchen_ShopModel.roles_insert" />
+          <FunctionImportMapping FunctionImportName="roles_update" FunctionName="Хранилище Kitchen_ShopModel.roles_update" />
+          <FunctionImportMapping FunctionImportName="service_delete" FunctionName="Хранилище Kitchen_ShopModel.service_delete" />
+          <FunctionImportMapping FunctionImportName="service_insert" FunctionName="Хранилище Kitchen_ShopModel.service_insert" />
+          <FunctionImportMapping FunctionImportName="service_update" FunctionName="Хранилище Kitchen_ShopModel.service_update" />
+          <FunctionImportMapping FunctionImportName="sklad_delete" FunctionName="Хранилище Kitchen_ShopModel.sklad_delete" />
+          <FunctionImportMapping FunctionImportName="sklad_insert_new" FunctionName="Хранилище Kitchen_ShopModel.sklad_insert_new" />
+          <FunctionImportMapping FunctionImportName="sklad_update" FunctionName="Хранилище Kitchen_ShopModel.sklad_update" />
+          <FunctionImportMapping FunctionImportName="sort_delete" FunctionName="Хранилище Kitchen_ShopModel.sort_delete" />
+          <FunctionImportMapping FunctionImportName="sort_insert" FunctionName="Хранилище Kitchen_ShopModel.sort_insert" />
+          <FunctionImportMapping FunctionImportName="sort_update" FunctionName="Хранилище Kitchen_ShopModel.sort_update" />
+          <FunctionImportMapping FunctionImportName="sotrudniki_delete" FunctionName="Хранилище Kitchen_ShopModel.sotrudniki_delete" />
+          <FunctionImportMapping FunctionImportName="sotrudniki_insert" FunctionName="Хранилище Kitchen_ShopModel.sotrudniki_insert" />
+          <FunctionImportMapping FunctionImportName="sotrudniki_update" FunctionName="Хранилище Kitchen_ShopModel.sotrudniki_update" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище Kitchen_ShopModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище Kitchen_ShopModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище Kitchen_ShopModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище Kitchen_ShopModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Kitchen_ShopModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище Kitchen_ShopModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Kitchen_ShopModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище Kitchen_ShopModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище Kitchen_ShopModel.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="special_delete" FunctionName="Хранилище Kitchen_ShopModel.special_delete" />
+          <FunctionImportMapping FunctionImportName="special_insert" FunctionName="Хранилище Kitchen_ShopModel.special_insert" />
+          <FunctionImportMapping FunctionImportName="special_update" FunctionName="Хранилище Kitchen_ShopModel.special_update" />
+          <FunctionImportMapping FunctionImportName="tovar_delete" FunctionName="Хранилище Kitchen_ShopModel.tovar_delete" />
+          <FunctionImportMapping FunctionImportName="tovar_insert" FunctionName="Хранилище Kitchen_ShopModel.tovar_insert" />
+          <FunctionImportMapping FunctionImportName="Users_delete" FunctionName="Хранилище Kitchen_ShopModel.Users_delete" />
+          <FunctionImportMapping FunctionImportName="users_insert" FunctionName="Хранилище Kitchen_ShopModel.users_insert" />
+          <FunctionImportMapping FunctionImportName="users_update" FunctionName="Хранилище Kitchen_ShopModel.users_update" />
+          <FunctionImportMapping FunctionImportName="users_update_block" FunctionName="Хранилище Kitchen_ShopModel.users_update_block" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
